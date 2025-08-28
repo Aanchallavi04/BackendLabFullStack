@@ -1,27 +1,22 @@
-// pipeStream.js
+// readFile.js
 const fs = require("fs");
 const path = require("path");
 
-const inputFile = path.join(__dirname, "input.txt");
-const outputFile = path.join(__dirname, "output.txt");
+// File path
+const filePath = path.join(__dirname, "data.txt");
 
-// Create readable and writable streams
-const readStream = fs.createReadStream(inputFile, { encoding: "utf8" });
-const writeStream = fs.createWriteStream(outputFile, { flags: "w", encoding: "utf8" });
+// Asynchronous read
+fs.readFile(filePath, "utf8", (err, data) => {
+  if (err) {
+    if (err.code === "ENOENT") {
+      console.error("❌ Error: File not found!");
+    } else {
+      console.error("❌ An error occurred:", err.message);
+    }
+    return; // Exit on error
+  }
 
-// Pipe the readable stream into the writable stream
-readStream.pipe(writeStream);
-
-// Success message when done
-writeStream.on("finish", () => {
-  console.log("✅ Data successfully piped from input.txt to output.txt");
-});
-
-// Handle errors
-readStream.on("error", (err) => {
-  console.error("❌ Error reading file:", err.message);
-});
-
-writeStream.on("error", (err) => {
-  console.error("❌ Error writing file:", err.message);
+  // If no error
+  console.log("✅ File contents:");
+  console.log(data);
 });
