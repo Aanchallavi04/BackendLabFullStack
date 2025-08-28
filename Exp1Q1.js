@@ -8,3 +8,10 @@ module.exports = {
     bye(name) { return `Goodbye, ${name}!`; },
   },
 };
+
+2nd file code
+const helpers = require("./helpers");
+
+console.log(helpers.math.mul(4, 2));        // 8
+console.log(helpers.greet.hello("Aanchal")); // Hello, Aanchal!
+
