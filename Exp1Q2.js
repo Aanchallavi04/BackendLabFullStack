@@ -9,14 +9,14 @@ const filePath = path.join(__dirname, "data.txt");
 fs.readFile(filePath, "utf8", (err, data) => {
   if (err) {
     if (err.code === "ENOENT") {
-      console.error("❌ Error: File not found!");
+      console.error(" Error: File not found!");
     } else {
-      console.error("❌ An error occurred:", err.message);
+      console.error(" An error occurred:", err.message);
     }
     return; // Exit on error
   }
 
   // If no error
-  console.log("✅ File contents:");
+  console.log(" File contents:");
   console.log(data);
 });
