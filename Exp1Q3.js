@@ -14,10 +14,10 @@ const server = http.createServer((req, res) => {
       if (err) {
         if (err.code === "ENOENT") {
           res.writeHead(404, { "Content-Type": "text/plain" });
-          res.end("❌ File not found!");
+          res.end(" File not found!");
         } else {
           res.writeHead(500, { "Content-Type": "text/plain" });
-          res.end("❌ Server error: " + err.message);
+          res.end(" Server error: " + err.message);
         }
       } else {
         res.writeHead(200, { "Content-Type": "text/plain" });
@@ -33,5 +33,5 @@ const server = http.createServer((req, res) => {
 // Start server
 const PORT = 3000;
 server.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+  console.log(` Server running at http://localhost:${PORT}`);
 });
