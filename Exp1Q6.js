@@ -14,14 +14,14 @@ readStream.pipe(writeStream);
 
 // Success message when done
 writeStream.on("finish", () => {
-  console.log("✅ Data successfully piped from input.txt to output.txt");
+  console.log(" Data successfully piped from input.txt to output.txt");
 });
 
 // Handle errors
 readStream.on("error", (err) => {
-  console.error("❌ Error reading file:", err.message);
+  console.error("Error reading file:", err.message);
 });
 
 writeStream.on("error", (err) => {
-  console.error("❌ Error writing file:", err.message);
+  console.error("Error writing file:", err.message);
 });
